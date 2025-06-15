@@ -47,7 +47,7 @@ hatch run test:pytest --version > /dev/null 2>&1 || echo "⚠️  Tests not yet 
 echo ""
 echo "✅ Bootstrap complete! Next steps:"
 echo "   1. Edit .env file with your API keys"
-echo "   2. Start coding your agent in src/sample_agent/"
+echo "   2. Start coding your agent in src/uv_agentic/"
 echo "   3. Run 'hatch run test:pytest' to run tests"
 echo "   4. Run 'hatch run dev' to start development server"
 echo ""

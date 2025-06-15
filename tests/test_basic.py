@@ -1,5 +1,5 @@
 import unittest
-from sample_agent import greet
+from uv_agentic import greet
 
 
 class TestGreet(unittest.TestCase):
