@@ -19,14 +19,12 @@ Merge order: `dev` → PR into `scooter` → PR into `bicycle` → milestone re
 
 ## 8 . How to cut a release
 
-1. Merge PRs with **Conventional Commit titles** (`feat:`, `fix:`…).  
-2. Push tag `vX.Y.Z` *or* run `/release` slash‑command on GH.  
-3. Workflow `release.yml`:
-   * computes new version with `semantic‑release`,
-   * builds wheel + sdist,
-   * pushes to PyPI,
-   * creates GitHub Release notes from commit messages,
-   * bumps `CHANGELOG.md`.
+1. Merge PRs with **Conventional Commit titles** (`feat:`, `fix:`…).
+2. Bump the version in `pyproject.toml` and update `CHANGELOG.md`.
+3. Create and push a tag `vX.Y.Z` to GitHub.
+4. Build the project with `python -m build` and upload the artifacts to PyPI
+   using `twine`.
+5. Draft GitHub Release notes manually from the changelog.
 
 <br>
 
