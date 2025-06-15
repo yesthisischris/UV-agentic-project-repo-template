@@ -1,0 +1,9 @@
+langchain       = ">=0.2.0"     # new function‑calling & tool abstractions
+langgraph       = ">=0.5.0"
+openai          = ">=1.25"
+anthropic       = ">=0.21"
+agentic-tools   = ">=0.1"       # pulls our pypi.py, github_mcp.py, …
+pgvector        = ">=0.2"
+redis           = ">=5.0"
+python-dotenv   = ">=1.0"
+# todo: add ruff, pytest, hypothesis, mypy, pre‑commit, langsmith‑cli

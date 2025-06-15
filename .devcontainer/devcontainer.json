@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerSchema.json",
+  "name": "LangGraph MCP Template",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [
+    5432,   // Postgres
+    6379,   // Redis
+    4186    // LangSmith local UI
+  ],
+  "postCreateCommand": "./.devcontainer/postCreate.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "github.copilot",
+        "ms-vscode-remote.remote-containers"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true,
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  }
+}
+// todo: .devcontainer/Dockerfile installs Poetry, CUDA 12, nvidia‑cudnn‑cuda12., devcontainer.json forwards ports for Postgres 5432 & LangSmith local UI 4186, mounts your secrets from Codespaces secrets store

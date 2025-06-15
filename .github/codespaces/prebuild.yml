@@ -1,0 +1,20 @@
+name: Create Codespaces prebuild
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  prebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create Codespace
+        uses: github/devcontainers-action@v1
+        with:
+          imageName: ghcr.io/${{ github.repository }}/codespace:latest
+          cacheFrom: ghcr.io/${{ github.repository }}/codespace:latest
