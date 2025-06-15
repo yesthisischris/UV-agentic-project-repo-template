@@ -9,10 +9,15 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "forwardPorts": [
-    5432,   // Postgres
-    6379,   // Redis
-    4186    // LangSmith local UI
+    5432,
+    6379,
+    4186
   ],
+  "forwardPortDescriptions": {
+    "5432": "Postgres",
+    "6379": "Redis",
+    "4186": "LangSmith local UI"
+  },
   "postCreateCommand": "./.devcontainer/postCreate.sh",
   "customizations": {
     "vscode": {
@@ -28,6 +33,6 @@
         "files.trimTrailingWhitespace": true
       }
     }
-  }
+  },
+  "notes": "todo: .devcontainer/Dockerfile installs Poetry, CUDA 12, nvidia-cudnn-cuda12. devcontainer.json forwards ports for Postgres 5432 & LangSmith local UI 4186, mounts your secrets from Codespaces secrets store"
 }
-// todo: .devcontainer/Dockerfile installs Poetry, CUDA 12, nvidia‑cudnn‑cuda12., devcontainer.json forwards ports for Postgres 5432 & LangSmith local UI 4186, mounts your secrets from Codespaces secrets store
