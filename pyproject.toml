@@ -8,3 +8,15 @@ version = "0.1.0"
 description = "Sample agent package"
 readme = "README.md"
 requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.31",
+]
+authors = [
+    { name = "Umbra Versa", email = "uv@example.com" },
+]
+[project.scripts]
+sample-agent = "sample_agent.cli:main"
+
+[tool.setuptools]
+packages = ["sample_agent"]
+package-dir = {"" = "src"}
