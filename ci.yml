@@ -21,9 +21,6 @@ jobs:
           ruff check src tests
           mypy src/my_agent_project -p agentic_tools
       - name: Tests
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: pytest -q
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
