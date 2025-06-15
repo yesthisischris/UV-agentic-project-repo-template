@@ -4,47 +4,42 @@ This is the documentation site.
 
 ## Quick Start
 
-Get started with building your AI agent:
+Get started with the template:
 
 ```bash
 # Create a new project from this template
-gh repo create my-agent --template langgraph-mcp-template
+gh repo create my-agent --template UV-agentic-project-repo-template
 
 # Navigate to your project
 cd my-agent
 
-# Set up the development environment
-bash scripts/bootstrap.sh
+# Install the project in editable mode
+python -m pip install -e .
+
+# Run the unit tests
+python -m unittest discover -s tests
 ```
 
 ## Architecture Overview
 
-This template provides a solid foundation for building sophisticated AI agents using:
-
-- **LangGraph**: For orchestrating complex agent workflows
-- **Model Context Protocol**: For tool integration and external system access
-- **Vector Memory**: For long-term memory and context retrieval
-- **Modern Python Stack**: Hatch, Ruff, MyPy for development workflow
+This template provides a lightweight starting point for building AI agents. It uses a modern Python stack (Hatch, Ruff, MyPy) and can be extended with frameworks such as LangGraph or the Model Context Protocol if your project requires them.
 
 ## Key Features
 
 - **Rapid Development**: Get from idea to working agent quickly
-- **Tool Integration**: Easy MCP server setup and tool binding
-- **Memory Management**: Built-in vector store and state management
-- **CI/CD Ready**: GitHub Actions workflows for testing and deployment
-- **Observability**: LangSmith integration for monitoring and debugging
+- **Clean Project Layout**: Straightforward structure for code, tests and docs
+- **CI/CD Ready**: GitHub Actions workflow for testing and deployment
+- **Customizable**: Integrate memory backends or external frameworks as needed
 
 ## Project Structure
 
 ```
 my-agent/
-├── src/sample_agent/
-│   ├── agents/          # Agent implementations
-│   ├── graphs/          # LangGraph workflow definitions
-│   ├── memory/          # Vector store and state schemas
-│   └── prompts/         # System and user prompts
-├── scripts/             # Development and deployment scripts
-└── docs/               # Documentation (this site)
+├── src/            # project code
+├── tests/          # unit tests
+├── docs/           # documentation
+└── .github/        # CI configuration
+
 ```
 
 ## Next Steps
