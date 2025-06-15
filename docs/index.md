@@ -38,7 +38,7 @@ This template provides a solid foundation for building sophisticated AI agents u
 
 ```
 my-agent/
-├── src/my_agent_project/
+├── src/sample_agent/
 │   ├── agents/          # Agent implementations
 │   ├── graphs/          # LangGraph workflow definitions
 │   ├── memory/          # Vector store and state schemas
