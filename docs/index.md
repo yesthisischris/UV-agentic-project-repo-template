@@ -39,6 +39,7 @@ my-agent/
 ├── tests/          # unit tests
 ├── docs/           # documentation
 └── .github/        # CI configuration
+
 ```
 
 ## Next Steps
