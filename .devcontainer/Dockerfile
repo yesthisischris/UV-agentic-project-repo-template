@@ -14,9 +14,10 @@ RUN useradd -m -s /bin/bash vscode
 WORKDIR /workspace
 
 # Install Python dependencies
-COPY requirements.txt* pyproject.toml ./
+COPY . .
 RUN pip install --upgrade pip && \
-    pip install hatch pre-commit
+    pip install hatch pre-commit && \
+    pip install -e .
 
 # Switch to non-root user
 USER vscode
