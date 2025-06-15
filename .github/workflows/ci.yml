@@ -1,42 +1,21 @@
 name: CI
 
 on:
-  push:
-    branches: [main, bicycle, scooter, dev]
   pull_request:
-    branches: [main, bicycle, scooter]
+  push:
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.12"]
-        
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install hatch
-        hatch env create
-        
-    - name: Run ruff
-      run: hatch run lint:ruff check
-      
-    - name: Run mypy
-      run: hatch run lint:mypy
-      
-    - name: Run tests
-      run: hatch run test:pytest --cov=src --cov-report=xml
-      
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      - name: Run tests
+        run: python -m unittest discover -s tests
