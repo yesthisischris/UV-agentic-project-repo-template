@@ -13,7 +13,6 @@
     6379,   // Redis
     4186    // LangSmith local UI
   ],
-  "postCreateCommand": "./.devcontainer/postCreate.sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -30,4 +29,3 @@
     }
   }
 }
-// todo: .devcontainer/Dockerfile installs Poetry, CUDA 12, nvidia‑cudnn‑cuda12., devcontainer.json forwards ports for Postgres 5432 & LangSmith local UI 4186, mounts your secrets from Codespaces secrets store
