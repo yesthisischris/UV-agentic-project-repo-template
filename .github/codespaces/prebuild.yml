@@ -13,8 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create Codespace
-        uses: github/devcontainers-action@v1
+      - name: Login to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push dev container image
+        uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/${{ github.repository }}/codespace:latest
           cacheFrom: ghcr.io/${{ github.repository }}/codespace:latest
+          push: always
+
