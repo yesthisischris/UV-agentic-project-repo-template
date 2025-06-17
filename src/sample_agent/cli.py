@@ -1,7 +1,10 @@
 """Command-line interface for the sample agent."""
 
 import argparse
+import json
+import os
 import sys
+from pathlib import Path
 from langsmith import trace
 import structlog
 
@@ -13,6 +16,7 @@ structlog.configure(
     logger_factory=structlog.PrintLoggerFactory(file=sys.stdout),
 )
 logger = structlog.get_logger()
+RUN_ID = os.getenv("RUN_ID")
 
 
 def main() -> None:
@@ -32,6 +36,11 @@ def main() -> None:
         message = greet(args.name)
 
     logger.info(message)
+    if RUN_ID:
+        log_path = Path(f"{RUN_ID}.log")
+        with log_path.open("a", encoding="utf-8") as f:
+            json.dump({"event": message}, f)
+            f.write("\n")
 
 
 if __name__ == "__main__":

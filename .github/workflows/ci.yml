@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      RUN_ID: ${{ github.run_id }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -25,4 +27,6 @@ jobs:
         if: always()
         with:
           name: test-reports
-          path: tests/.reports/
+          path: |
+            tests/.reports/
+            ${{ env.RUN_ID }}.log
