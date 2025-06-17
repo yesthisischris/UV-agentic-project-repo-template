@@ -1,54 +1,84 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
-echo "🚀 Bootstrapping LangGraph MCP Template development environment..."
+echo "Bootstrapping LangGraph MCP template development environment…"
 
-# Check if Python is available
-if ! command -v python &> /dev/null; then
-    echo "❌ Python is required but not installed. Please install Python 3.11+ first."
+# ---------------------------------------------------------------------------
+# 1.  Sanity checks
+# ---------------------------------------------------------------------------
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "ERROR: Python 3.11+ is required but not found." >&2
     exit 1
 fi
 
-# Check Python version
-python_version=$(python --version 2>&1 | cut -d' ' -f2)
-echo "✅ Found Python $python_version"
+PY_VERSION=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:3])))')
+echo "Found Python ${PY_VERSION}"
 
-# Install/upgrade pip and hatch
-echo "📦 Installing build tools..."
-python -m pip install --upgrade pip
-pip install hatch
+# ---------------------------------------------------------------------------
+# 2.  Install build tooling (pip, hatch) – user-local to avoid sudo
+# ---------------------------------------------------------------------------
 
-# Create and setup development environment
-echo "🔧 Setting up development environment..."
+python3 -m pip install --upgrade --user pip hatch
+
+# Ensure the user-local bin directory is on PATH for this session
+# shellcheck disable=SC2016
+export PATH="$HOME/.local/bin:$PATH"
+
+# ---------------------------------------------------------------------------
+# 3.  Create Hatch environment (uses pyproject.toml)
+# ---------------------------------------------------------------------------
+
+echo "Creating Hatch virtual environment…"
 hatch env create
 
-# Install pre-commit if not already installed
-if ! command -v pre-commit &> /dev/null; then
-    echo "🪝 Installing pre-commit..."
-    pip install pre-commit
+# ---------------------------------------------------------------------------
+# 4.  Pre-commit hooks
+# ---------------------------------------------------------------------------
+
+if ! command -v pre-commit >/dev/null 2>&1; then
+    echo "Installing pre-commit…"
+    python3 -m pip install --user pre-commit
 fi
 
-# Install pre-commit hooks
-echo "🔨 Installing pre-commit hooks..."
+echo "Installing pre-commit hooks…"
 pre-commit install
 pre-commit install --hook-type commit-msg
 
-# Copy environment template if .env doesn't exist
-if [ ! -f .env ]; then
-    echo "📝 Creating .env file from template..."
+# ---------------------------------------------------------------------------
+# 5.  Environment template
+# ---------------------------------------------------------------------------
+
+if [[ ! -f .env ]]; then
+    echo "Creating .env from template…"
     cp env.example .env
-    echo "⚠️  Please edit .env file with your actual API keys and configuration"
+    echo "Edit .env and add your API keys before running the agent."
 fi
 
-# Run initial tests to make sure everything works
-echo "🧪 Running initial tests..."
-hatch run test:pytest --version > /dev/null 2>&1 || echo "⚠️  Tests not yet implemented - that's normal for a new project"
+# ---------------------------------------------------------------------------
+# 6.  Quick smoke test (optional)
+# ---------------------------------------------------------------------------
 
-echo ""
-echo "✅ Bootstrap complete! Next steps:"
-echo "   1. Edit .env file with your API keys"
-echo "   2. Start coding your agent in src/uv_agentic/"
-echo "   3. Run 'hatch run test:pytest' to run tests"
-echo "   4. Run 'hatch run dev' to start development server"
-echo ""
-echo "Happy coding! 🎉"
+echo "Running initial test harness (will be skipped if none exist)…"
+if hatch run test:pytest --version >/dev/null 2>&1; then
+    echo "Tests discovered – run 'hatch run test:pytest' for full suite."
+else
+    echo "No tests implemented yet (that is fine for a fresh repo)."
+fi
+
+# ---------------------------------------------------------------------------
+# 7.  Final message
+# ---------------------------------------------------------------------------
+
+cat <<'EOF'
+
+Bootstrap complete.
+
+Next steps:
+  1. Populate .env with your API keys.
+  2. Start coding your agent in src/uv_agentic/.
+  3. Run 'hatch run test:pytest' to execute tests.
+  4. Run 'hatch run dev' (or your preferred entry-point) to start a dev session.
+
+Happy coding!
+EOF
