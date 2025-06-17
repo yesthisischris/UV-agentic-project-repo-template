@@ -3,11 +3,16 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sample-agent"
+name = "uv-agentic"
 version = "0.1.0"
-description = "Sample agent package"
+description = "Agentic development template powered by LangGraph & MCP"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3.12",
+  "Framework :: LangChain",
+  "License :: OSI Approved :: MIT License",
+]
 dependencies = [
     "requests>=2.31",
     "structlog>=23",
@@ -21,6 +26,10 @@ authors = [
 [project.scripts]
 sample-agent = "sample_agent.cli:main"
 
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff", "mypy", "pre-commit"]
+docs = ["mkdocs>=1.6", "mkdocs-material"]
+
 [tool.hatch.envs.default]
 dependencies = [
     "pytest",
@@ -32,5 +41,9 @@ dev = "python -m sample_agent.cli"
 test = "pytest tests"
 
 [tool.setuptools]
-packages = ["sample_agent", "agentic_core"]
+packages = ["sample_agent", "agentic_core", "uv_agentic"]
 package-dir = {"" = "src"}
+
+[tool.semantic_release]
+branch = "main"
+package = "uv_agentic"

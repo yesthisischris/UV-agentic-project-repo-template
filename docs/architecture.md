@@ -2,6 +2,14 @@
 
 ---
 
+```mermaid
+graph TD
+    A[User prompt] --> B[Plan Graph]
+    B --> C[Build Graph]
+    C --> D[Review Graph]
+    D --> E[Artifacts / PR]
+```
+
 ## 7 . “Skateboard → Scooter → Bicycle → Car” branch strategy
 
 | Branch    | Policy                                    | Protections |

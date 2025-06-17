@@ -6,16 +6,11 @@
   },
   "overrideCommand": false,
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/images/postgres": {
+    "ghcr.io/devcontainers/features/postgres:1": {
       "version": "16",
-      "plan": "onDemand"
+      "initializeDatabase": false
     },
-    "ghcr.io/devcontainers/images/redis": {
-      "version": "7",
-      "plan": "onDemand"
-    }
+    "ghcr.io/devcontainers/features/redis:1": {}
   },
   "forwardPorts": [
     5432,
