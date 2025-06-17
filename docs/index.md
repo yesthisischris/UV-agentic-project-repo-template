@@ -46,6 +46,6 @@ my-agent/
 
 - [Architecture Overview](architecture.md)
 - [Contributing Guide](CONTRIBUTING.md)
-- [API Reference](api/)
+- [API Reference](api/index.md)
 
 ---
