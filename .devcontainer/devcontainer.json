@@ -29,7 +29,7 @@
   },
   "remoteEnv": {
     "PYTHONPATH": "/workspace",
-    "UV_AGENTIC_DEV": "1"
+    "AGENTIC_DEV": "1"
   },
   "postCreateCommand": "./.devcontainer/postCreate.sh",
   "customizations": {

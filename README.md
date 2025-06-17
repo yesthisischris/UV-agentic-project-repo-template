@@ -1,6 +1,6 @@
-# UV-agentic-project-repo-template
+# Agentic project template
 
-Template repository for Umbra Versa agentic AI projects.
+Template repository for building agentic AI projects.
 
 ## Project structure
 
@@ -26,7 +26,7 @@ Template repository for Umbra Versa agentic AI projects.
 Import the default planning graph and iterate over steps:
 
 ```python
-from uv_agentic.graphs.plan import plan_graph
+from agentic_core.graphs.plan import plan_graph
 
 for step in plan_graph("Hello world"):
     print(step)

@@ -1,4 +1,4 @@
-# Welcome to this UV Agentic Project
+# Welcome to this Agentic Project
 
 This is the documentation site.
 
@@ -8,7 +8,7 @@ Get started with the template:
 
 ```bash
 # Create a new project from this template
-gh repo create my-agent --template UV-agentic-project-repo-template
+gh repo create my-agent --template agentic-project-template
 
 # Navigate to your project
 cd my-agent

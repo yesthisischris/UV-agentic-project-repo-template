@@ -1,4 +1,4 @@
-from uv_agentic import PlanningState, ExecutionState, SummaryState
+from agentic_core import PlanningState, ExecutionState, SummaryState
 
 
 def test_state_instantiation():
