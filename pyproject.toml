@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
     "requests>=2.31",
+    "pydantic>=2.6",
 ]
 authors = [
     { name = "Umbra Versa", email = "admin@umbraversa.com" },
@@ -29,5 +30,5 @@ dev = "python -m sample_agent.cli"
 test = "pytest tests"
 
 [tool.setuptools]
-packages = ["sample_agent"]
+packages = ["sample_agent", "uv_agentic"]
 package-dir = {"" = "src"}
