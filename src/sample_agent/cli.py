@@ -7,14 +7,12 @@ import sys
 from pathlib import Path
 from langsmith import trace
 import structlog
+from uv_agentic.logging_config import configure_logging
 
 from . import greet
 from .config import settings
 
-structlog.configure(
-    processors=[lambda _logger, _name, event_dict: event_dict["event"]],
-    logger_factory=structlog.PrintLoggerFactory(file=sys.stdout),
-)
+configure_logging(json=os.getenv("LOG_FORMAT") == "json")
 logger = structlog.get_logger()
 RUN_ID = os.getenv("RUN_ID")
 
@@ -37,7 +35,7 @@ def main() -> None:
 
     logger.info(message)
     if RUN_ID:
-        log_path = Path(f"{RUN_ID}.log")
+        log_path = Path(f"{RUN_ID}.jsonl")
         with log_path.open("a", encoding="utf-8") as f:
             json.dump({"event": message}, f)
             f.write("\n")
