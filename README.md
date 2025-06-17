@@ -21,6 +21,25 @@ This repository provides a template for building agentic AI projects using Pytho
 └── .github/        # CI configuration
 ```
 
+## Agentic Core State Flow
+
+Below is a diagram of the main states involved in agentic workflows, as implemented in `agentic_core.state_schemas`. These states are optional and customizable, but serve as a reasonable jumping off point:
+
+```mermaid
+flowchart LR
+    PlanningState([PlanningState<br/>goal, plan])
+    ExecutionState([ExecutionState<br/>goal, plan, last_step, steps_completed])
+    SummaryState([SummaryState<br/>goal, plan, summary])
+
+    PlanningState -->|Creates plan| ExecutionState
+    ExecutionState -->|Completes execution| SummaryState
+```
+
+    PlanningState: Defines the agent's goal and an optional plan (list of actions).
+    ExecutionState: Tracks the current plan, last executed step, and all completed steps.
+    SummaryState: Holds the final goal, executed plan, and a summary after all steps are done.
+
+
 ## Getting started
 1. Create a virtual environment and install the project in editable mode:
    ```bash
@@ -31,9 +50,7 @@ This repository provides a template for building agentic AI projects using Pytho
    pytest -q
    ```
 
-## Quick start
-
-Import the default planning graph and iterate over steps:
+3. Import the default planning graph and iterate over steps:
 
 ```python
 from agentic_core.graphs.plan import plan_graph
