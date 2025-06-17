@@ -14,6 +14,9 @@ dist/
 venv/
 ENV/
 
+# MkDocs output
+site/
+
 # OS files
 .DS_Store
 Thumbs.db

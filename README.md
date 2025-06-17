@@ -21,6 +21,17 @@ Template repository for Umbra Versa agentic AI projects.
    pytest -q
    ```
 
+## Quick start
+
+Import the default planning graph and iterate over steps:
+
+```python
+from uv_agentic.graphs.plan import plan_graph
+
+for step in plan_graph("Hello world"):
+    print(step)
+```
+
 ## Security guidelines
 Secrets should never be committed to the repository. Use environment variables
 or a `.env` file excluded from version control for credentials.

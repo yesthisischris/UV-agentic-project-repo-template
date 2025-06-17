@@ -45,7 +45,7 @@ my-agent/
 ## Next Steps
 
 - [Architecture Overview](architecture.md)
-- [Contributing Guide](contributing.md)
-- [API Reference](api/)
+- [Contributing Guide](CONTRIBUTING.md)
+- [API Reference](api/index.md)
 
 ---
