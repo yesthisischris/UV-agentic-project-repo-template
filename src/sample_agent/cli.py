@@ -4,7 +4,14 @@ import argparse
 import json
 import os
 from pathlib import Path
-from langsmith import trace
+try:
+    from langsmith import trace
+except Exception:  # pragma: no cover - optional dependency
+    def trace(*_a, **_kw):
+        def decorator(fn):
+            return fn
+
+        return decorator
 import structlog
 from agentic_core.logging_config import configure_logging
 
