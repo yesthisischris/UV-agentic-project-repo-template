@@ -18,7 +18,7 @@ Template repository for Umbra Versa agentic AI projects.
    ```
 2. Run tests:
    ```bash
-   python -m unittest discover -s tests
+   pytest -q
    ```
 
 ## Quick start

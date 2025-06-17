@@ -24,3 +24,5 @@ Thumbs.db
 # Local configuration
 .env
 *.local
+tests/.reports/
+*.log

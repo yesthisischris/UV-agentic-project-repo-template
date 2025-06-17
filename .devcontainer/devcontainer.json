@@ -4,9 +4,18 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "overrideCommand": false,
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/images/postgres": {
+      "version": "16",
+      "plan": "onDemand"
+    },
+    "ghcr.io/devcontainers/images/redis": {
+      "version": "7",
+      "plan": "onDemand"
+    }
   },
   "forwardPorts": [
     5432,
@@ -17,6 +26,10 @@
     "5432": "Postgres",
     "6379": "Redis",
     "4186": "LangSmith local UI"
+  },
+  "remoteEnv": {
+    "PYTHONPATH": "/workspace",
+    "UV_AGENTIC_DEV": "1"
   },
   "postCreateCommand": "./.devcontainer/postCreate.sh",
   "customizations": {
