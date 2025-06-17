@@ -1,4 +1,4 @@
-"""UV Agentic core package."""
+"""Agentic core package."""
 
 from .state_schemas import PlanningState, ExecutionState, SummaryState
 
