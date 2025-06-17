@@ -17,7 +17,7 @@ cd my-agent
 python -m pip install -e .
 
 # Run the unit tests
-python -m unittest discover -s tests
+pytest -q
 ```
 
 ## Architecture Overview
