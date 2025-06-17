@@ -1,4 +1,3 @@
 # Require at least one security reviewer on sensitive files
 *.yml                  @your-org/security-team
 Dockerfile             @your-org/devops
-src/uv_agentic/**      @your-org/ai-platform

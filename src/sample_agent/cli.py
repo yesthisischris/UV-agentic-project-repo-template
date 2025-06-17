@@ -3,11 +3,10 @@
 import argparse
 import json
 import os
-import sys
 from pathlib import Path
 from langsmith import trace
 import structlog
-from uv_agentic.logging_config import configure_logging
+from agentic_core.logging_config import configure_logging
 
 from . import greet
 from .config import settings
