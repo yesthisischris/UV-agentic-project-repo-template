@@ -1,4 +1,4 @@
-"""Sample agent library."""
+"""uv-agentic library."""
 
 
 def greet(name: str) -> str:

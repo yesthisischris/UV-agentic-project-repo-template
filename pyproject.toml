@@ -31,3 +31,6 @@ test = "pytest tests"
 [tool.setuptools]
 packages = ["uv_agentic"]
 package-dir = {"" = "src"}
+
+[tool.semantic_release]
+package = "uv_agentic"

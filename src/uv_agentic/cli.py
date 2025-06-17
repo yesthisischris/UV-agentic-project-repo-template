@@ -1,4 +1,4 @@
-"""Command-line interface for the sample agent."""
+"""Command-line interface for the uv-agentic sample."""
 
 import argparse
 from . import greet
