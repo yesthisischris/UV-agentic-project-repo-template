@@ -18,6 +18,10 @@
     "6379": "Redis",
     "4186": "LangSmith local UI"
   },
+  "remoteEnv": {
+    "PYTHONPATH": "/workspace",
+    "UV_AGENTIC_DEV": "1"
+  },
   "postCreateCommand": "./.devcontainer/postCreate.sh",
   "customizations": {
     "vscode": {
