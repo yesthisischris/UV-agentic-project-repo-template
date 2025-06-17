@@ -51,13 +51,12 @@ flowchart LR
    ```
 
 3. Import the default planning graph and iterate over steps:
-
-```python
-from agentic_core.graphs.plan import plan_graph
-
-for step in plan_graph("Hello world"):
-    print(step)
-```
+    ```python
+    from agentic_core.graphs.plan import plan_graph
+    
+    for step in plan_graph("Hello world"):
+        print(step)
+    ```
 
 ## Security guidelines
 Secrets should never be committed to the repository. Use environment variables
