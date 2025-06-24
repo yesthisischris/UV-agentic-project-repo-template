@@ -15,7 +15,7 @@ We support the following versions with security updates:
 We take security vulnerabilities seriously. If you discover a security vulnerability, please follow these steps:
 
 1. **Do not** open a public GitHub issue
-2. Email us at admin@umbraversa.com with:
+2. PM us with:
    - A clear description of the vulnerability
    - Steps to reproduce the issue
    - Potential impact assessment
